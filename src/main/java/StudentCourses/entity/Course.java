@@ -1,5 +1,7 @@
 package StudentCourses.entity;
 
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -9,6 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="courses")
+@NoArgsConstructor
 public class Course implements Serializable {
     
     @Id
@@ -38,6 +41,7 @@ public class Course implements Serializable {
         this.fee = fee;
         this.teacher = teacher;
     }
+
 
     @Override
     public int hashCode() {
@@ -72,12 +76,6 @@ public class Course implements Serializable {
     public String toString() {
         return "Course{" + "name=" + name + ", fee=" + fee + '}';
     }
-    
-    
-    
 
-    
- 
-    
     
 }

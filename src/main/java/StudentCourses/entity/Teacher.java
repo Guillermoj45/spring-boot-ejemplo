@@ -1,5 +1,7 @@
 package StudentCourses.entity;
 
+
+
 import lombok.*;
 
 import javax.persistence.*;
