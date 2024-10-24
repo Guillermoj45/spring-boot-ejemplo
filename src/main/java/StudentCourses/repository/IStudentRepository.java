@@ -11,5 +11,5 @@ public interface IStudentRepository extends JpaRepository<Student, Long> {
 
     @Query("FROM Student s WHERE s.firstName LIKE :name OR s.lastName LIKE :name")
     public List<Student> findByNameContaining(@Param("name") String name);
-    
+
 }

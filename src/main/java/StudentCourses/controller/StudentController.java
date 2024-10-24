@@ -5,21 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import StudentCourses.entity.Course;
 import StudentCourses.entity.Student;
 import StudentCourses.repository.ICourseRepository;
 import StudentCourses.service.StudentService;
 
+@RequestMapping("/students")
 @Controller
 public class StudentController {
     
     @Autowired
     private StudentService studentService;
+
     @Autowired
     private ICourseRepository courseRepository;
 
@@ -39,13 +38,13 @@ public class StudentController {
         return "students";
     }    
     
-    @GetMapping("/students")
+    @GetMapping
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
         return "students";
     }
     
-    @GetMapping("/students/new")
+    @GetMapping("/new")
     public String createStudentForm(Model model){
         
         // este objeto Student almacenara los valores 
@@ -57,13 +56,13 @@ public class StudentController {
         return "create_student";
     }
     
-    @PostMapping("/students")
+    @PostMapping
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentService.saveStudent(student);
         return "redirect:/students";
     }
     
-    @GetMapping("/students/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editStudentForm(@PathVariable Long id, Model model) {
         Student st = studentService.getStudentById(id);
         
@@ -73,7 +72,7 @@ public class StudentController {
         return "edit_student";
     }
     
-    @PostMapping("/students/{id}")
+    @PostMapping("/{id}")
     public String updateStudent(@PathVariable Long id, 
             @ModelAttribute("student") Student student,
             Model model) {
@@ -92,7 +91,7 @@ public class StudentController {
         return "redirect:/students";
     }
     
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudentById(id);
         return "redirect:/students";

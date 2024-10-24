@@ -4,8 +4,9 @@ package StudentCourses.service;
 import java.util.List;
 
 import StudentCourses.entity.Course;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public interface ICourseService {
     
     List<Course> getAllCourses();
