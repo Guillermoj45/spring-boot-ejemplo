@@ -1,7 +1,6 @@
 package StudentCourses.entity;
 
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,4 +25,4 @@ public class Teacher {
     @Column
     private String email;
 
-    }
+}

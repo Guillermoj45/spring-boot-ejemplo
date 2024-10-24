@@ -1,20 +1,20 @@
 package StudentCourses.service;
 
-import java.util.List;
-import org.springframework.stereotype.Service;
-
 import StudentCourses.entity.Student;
 import StudentCourses.repository.IStudentRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentService implements IStudentService {
-    
+
     private IStudentRepository studentRepository;
 
     public StudentService(IStudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
- 
+
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
@@ -44,5 +44,5 @@ public class StudentService implements IStudentService {
     public List<Student> getStudentByName(String name) {
         return studentRepository.findByNameContaining(name);
     }
-    
+
 }

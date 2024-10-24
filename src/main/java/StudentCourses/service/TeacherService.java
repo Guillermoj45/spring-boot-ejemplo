@@ -2,7 +2,6 @@ package StudentCourses.service;
 
 import StudentCourses.entity.Teacher;
 import StudentCourses.repository.ITeacherRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 

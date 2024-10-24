@@ -1,52 +1,42 @@
 package StudentCourses.entity;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 
 @Entity
-@Table(name="students")
+@Table(name = "students")
 public class Student {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(name="first_name", nullable=false)
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    
-    @Column(name="last_name")
+
+    @Column(name = "last_name")
     private String lastName;
-    
-    @Column(name="email")
-    private String email;    
-    
-    
+
+    @Column(name = "email")
+    private String email;
+
+
     // relacion muchos a muchos con cursos
-    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
-    @JoinTable(name="students_courses",
-        joinColumns = {
-            @JoinColumn(name="student_id", referencedColumnName="id",
-            nullable=false, updatable=false)
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name="course_id", referencedColumnName="id",
-            nullable=false, updatable=false)
-        })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "students_courses",
+            joinColumns = {
+                    @JoinColumn(name = "student_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "course_id", referencedColumnName = "id",
+                            nullable = false, updatable = false)
+            })
     private Set<Course> courses = new HashSet<>();
-    
-    
+
+
     public Student() {
     }
 
@@ -96,11 +86,11 @@ public class Student {
         this.courses = courses;
     }
 
-    
+
     @Override
     public String toString() {
         return "Student{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
-    
-    
+
+
 }

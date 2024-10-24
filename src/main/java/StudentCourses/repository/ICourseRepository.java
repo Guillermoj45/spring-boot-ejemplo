@@ -1,11 +1,11 @@
 package StudentCourses.repository;
 
-import java.util.List;
+import StudentCourses.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import StudentCourses.entity.Course;
+import java.util.List;
 
 public interface ICourseRepository extends JpaRepository<Course, Long> {
 

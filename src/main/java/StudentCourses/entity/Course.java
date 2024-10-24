@@ -2,36 +2,36 @@ package StudentCourses.entity;
 
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.*;
 
 
 @Entity
-@Table(name="courses")
+@Table(name = "courses")
 @NoArgsConstructor
 public class Course implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String name;
-    
+
     private int modules;
-    
+
     private double credits;
-    
+
     private double fee;
-    
-    
-    @ManyToMany(mappedBy="courses", fetch=FetchType.LAZY)
+
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private Set<Student> students = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name="teacher_id")
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
     public Course(String name, int modules, double credits, double fee, Teacher teacher) {
@@ -77,5 +77,5 @@ public class Course implements Serializable {
         return "Course{" + "name=" + name + ", fee=" + fee + '}';
     }
 
-    
+
 }

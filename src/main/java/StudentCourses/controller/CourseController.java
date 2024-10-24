@@ -1,16 +1,14 @@
 package StudentCourses.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import StudentCourses.entity.Course;
 import StudentCourses.repository.ICourseRepository;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import StudentCourses.entity.Course;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
